@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Guna.UI2.WinForms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,10 +19,21 @@ namespace Hash_n_Coder
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
         }
+        private void LoadControl(UserControl uc)
+        {
+            guna2Panel1.Controls.Clear();
+            uc.Dock = DockStyle.Fill;
+            guna2Panel1.Controls.Add(uc);
+        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            LoadControl(new Encoding());
         }
     }
 }
