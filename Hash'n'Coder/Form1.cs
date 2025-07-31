@@ -35,5 +35,10 @@ namespace Hash_n_Coder
         {
             LoadControl(new Encoding());
         }
+
+        private void guna2Button2_Click(object sender, EventArgs e)
+        {
+            LoadControl(new AES());
+        }
     }
 }
