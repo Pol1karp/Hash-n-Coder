@@ -196,6 +196,7 @@
             this.guna2ImageButton1.PressedState.ImageSize = new System.Drawing.Size(34, 34);
             this.guna2ImageButton1.Size = new System.Drawing.Size(50, 33);
             this.guna2ImageButton1.TabIndex = 9;
+            this.guna2ImageButton1.Click += new System.EventHandler(this.guna2ImageButton1_Click);
             // 
             // guna2ImageButton2
             // 
@@ -210,6 +211,7 @@
             this.guna2ImageButton2.PressedState.ImageSize = new System.Drawing.Size(34, 34);
             this.guna2ImageButton2.Size = new System.Drawing.Size(50, 33);
             this.guna2ImageButton2.TabIndex = 10;
+            this.guna2ImageButton2.Click += new System.EventHandler(this.guna2ImageButton2_Click);
             // 
             // guna2Button1
             // 

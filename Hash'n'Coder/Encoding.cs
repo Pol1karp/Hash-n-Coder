@@ -21,5 +21,21 @@ namespace Hash_n_Coder
         {
 
         }
+
+        private void guna2ImageButton1_Click(object sender, EventArgs e)
+        {
+            if (Clipboard.ContainsText())
+            {
+                guna2TextBox1.Text = Clipboard.GetText();
+            }
+        }
+
+        private void guna2ImageButton2_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(guna2TextBox2.Text))
+            {
+                Clipboard.SetText(guna2TextBox2.Text);
+            }
+        }
     }
 }
