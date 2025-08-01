@@ -43,7 +43,7 @@ namespace Hash_n_Coder
 
         private void guna2Button3_Click(object sender, EventArgs e)
         {
-
+            LoadControl(new Hashing());
         }
     }
 }
