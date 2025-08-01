@@ -33,17 +33,17 @@ namespace Hash_n_Coder
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-            LoadControl(new Encoding());
+            LoadControl(new MyEncoding());
         }
 
         private void guna2Button2_Click(object sender, EventArgs e)
         {
-            LoadControl(new AES());
+            LoadControl(new MyAES());
         }
 
         private void guna2Button3_Click(object sender, EventArgs e)
         {
-            LoadControl(new Hashing());
+            LoadControl(new MyHashing());
         }
     }
 }

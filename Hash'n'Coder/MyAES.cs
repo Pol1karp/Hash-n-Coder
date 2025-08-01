@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Hash_n_Coder
 {
-    public partial class AES : UserControl
+    public partial class MyAES : UserControl
     {
-        public AES()
+        public MyAES()
         {
             InitializeComponent();
         }

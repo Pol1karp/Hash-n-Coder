@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Hash_n_Coder
 {
-    public partial class Hashing : UserControl
+    public partial class MyHashing : UserControl
     {
-        public Hashing()
+        public MyHashing()
         {
             InitializeComponent();
         }
