@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -30,22 +31,57 @@ namespace Hash_n_Coder
                 {
                     if (mode == "Encode")
                     {
-                        byte[] bytes = System.Text.Encoding.UTF8.GetBytes(input);
+                        byte[] bytes = Encoding.UTF8.GetBytes(input);
                         output = Convert.ToBase64String(bytes);
                     }
                     else if (mode == "Decode")
                     {
                         byte[] bytes = Convert.FromBase64String(input);
-                        output = System.Text.Encoding.UTF8.GetString(bytes);
-
+                        output = Encoding.UTF8.GetString(bytes);
                     }
                 }
+                else if (algorithm == "UrlEncode")
+                {
+                    if (mode == "Encode")
+                    {
+                        output = WebUtility.UrlEncode(input);
+                    }
+                    else if (mode == "Decode")
+                    {
+                        output = WebUtility.UrlDecode(input);
+                    }
+                }
+                else if (algorithm == "HtmlEncode")
+                {
+                    if (mode == "Encode")
+                    {
+                        output = WebUtility.HtmlEncode(input);
+                    }
+                    else if (mode == "Decode")
+                    {
+                        output = WebUtility.HtmlDecode(input);
+                    }
+                }
+                else if (algorithm == "Unescape")
+                {
+                    if (mode == "Encode")
+                    {
+                        output = Uri.EscapeDataString(input);
+                    }
+                    else if (mode == "Decode")
+                    {
+                        output = Uri.UnescapeDataString(input);
+                    }
+                }
+
+                guna2TextBox2.Text = output;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Ошибка: " + ex.Message);
             }
         }
+        
 
 
         private void guna2ImageButton1_Click(object sender, EventArgs e)
