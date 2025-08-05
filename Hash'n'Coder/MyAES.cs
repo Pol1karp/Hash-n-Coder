@@ -11,43 +11,6 @@ namespace Hash_n_Coder
         {
             InitializeComponent();
         }
-        private void guna2Button1_Click(object sender, EventArgs e)
-        {
-            string mode = guna2ComboBox2.SelectedItem?.ToString(); 
-            string algorithm = guna2ComboBox1.SelectedItem?.ToString(); 
-            string key = guna2TextBox3.Text;
-            string inputText = guna2TextBox1.Text;
-
-            try
-            {
-                if (algorithm == "AES-ECB")
-                {
-                    if (mode == "Шифровать")
-                    {
-                        guna2TextBox2.Text = EncryptAES_ECB(inputText, key);
-                    }
-                    else if (mode == "Дешифровать")
-                    {
-                        guna2TextBox2.Text = DecryptAES_ECB(inputText, key);
-                    }
-                }
-                else if (algorithm == "AES-CBC")
-                {
-                    if (mode == "Шифровать")
-                    {
-                        guna2TextBox2.Text = EncryptAES_CBC(inputText, key);
-                    }
-                    else if (mode == "Дешифровать")
-                    {
-                        guna2TextBox2.Text = DecryptAES_CBC(inputText, key);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ошибка: " + ex.Message);
-            }
-        }
 
         private string EncryptAES_ECB(string plainText, string key)
         {
@@ -95,7 +58,7 @@ namespace Hash_n_Coder
             using (Aes aes = Aes.Create())
             {
                 aes.Key = keyBytes;
-                aes.IV = keyBytes; 
+                aes.IV = keyBytes; // IV = KEY как по ТЗ
                 aes.Mode = CipherMode.CBC;
                 aes.Padding = PaddingMode.PKCS7;
 
@@ -115,7 +78,7 @@ namespace Hash_n_Coder
             using (Aes aes = Aes.Create())
             {
                 aes.Key = keyBytes;
-                aes.IV = keyBytes; 
+                aes.IV = keyBytes; // IV = KEY как по ТЗ
                 aes.Mode = CipherMode.CBC;
                 aes.Padding = PaddingMode.PKCS7;
 
@@ -126,6 +89,23 @@ namespace Hash_n_Coder
                 }
             }
         }
+
+        private byte[] PrepareKey(string key)
+        {
+            int keySizeBits = int.Parse(guna2ComboBox3.SelectedItem?.ToString() ?? "128");
+            int keySizeBytes = keySizeBits / 8;
+
+            // Берем SHA-256 от ключа и обрезаем
+            using (SHA256 sha = SHA256.Create())
+            {
+                byte[] hash = sha.ComputeHash(Encoding.UTF8.GetBytes(key));
+                byte[] keyBytes = new byte[keySizeBytes];
+                Array.Copy(hash, keyBytes, keySizeBytes);
+                return keyBytes;
+            }
+        }
+
+
         private void guna2ImageButton1_Click(object sender, EventArgs e)
         {
             if (Clipboard.ContainsText())
@@ -142,7 +122,45 @@ namespace Hash_n_Coder
             }
         }
 
-        private void guna2Button2_Click_1(object sender, EventArgs e)
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            string mode = guna2ComboBox2.SelectedItem?.ToString();
+            string algorithm = guna2ComboBox1.SelectedItem?.ToString();
+            string key = guna2TextBox3.Text;
+            string inputText = guna2TextBox1.Text;
+
+            try
+            {
+                if (algorithm == "AES-ECB")
+                {
+                    if (mode == "Шифровать")
+                    {
+                        guna2TextBox2.Text = EncryptAES_ECB(inputText, key);
+                    }
+                    else if (mode == "Дешифровать")
+                    {
+                        guna2TextBox2.Text = DecryptAES_ECB(inputText, key);
+                    }
+                }
+                else if (algorithm == "AES-CBC")
+                {
+                    if (mode == "Шифровать")
+                    {
+                        guna2TextBox2.Text = EncryptAES_CBC(inputText, key);
+                    }
+                    else if (mode == "Дешифровать")
+                    {
+                        guna2TextBox2.Text = DecryptAES_CBC(inputText, key);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка: " + ex.Message);
+            }
+        }
+
+        private void guna2Button2_Click(object sender, EventArgs e)
         {
             int keySizeBits = int.Parse(guna2ComboBox3.SelectedItem?.ToString() ?? "128");
             int keySizeBytes = keySizeBits / 8;
@@ -155,35 +173,5 @@ namespace Hash_n_Coder
 
             guna2TextBox3.Text = Convert.ToBase64String(randomKey);
         }
-
-        private byte[] PrepareKey(string key)
-        {
-            int keySizeBits = int.Parse(guna2ComboBox3.SelectedItem?.ToString() ?? "128");
-            int keySizeBytes = keySizeBits / 8;
-
-            byte[] keyBytes;
-
-            try
-            {
-                keyBytes = Convert.FromBase64String(key);
-            }
-            catch
-            {
-                keyBytes = Encoding.UTF8.GetBytes(key);
-            }
-
-            if (keyBytes.Length < keySizeBytes)
-            {
-                Array.Resize(ref keyBytes, keySizeBytes); 
-            }
-            else if (keyBytes.Length > keySizeBytes)
-            {
-                Array.Resize(ref keyBytes, keySizeBytes);
-            }
-
-            return keyBytes;
-        }
-
     }
-
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MyAES));
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2ImageButton2 = new Guna.UI2.WinForms.Guna2ImageButton();
@@ -46,6 +47,7 @@
             this.guna2TextBox3 = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2HtmlLabel7 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2AnimateWindow1 = new Guna.UI2.WinForms.Guna2AnimateWindow(this.components);
             this.SuspendLayout();
             // 
             // guna2Button1
@@ -308,7 +310,7 @@
             this.guna2Button2.Size = new System.Drawing.Size(244, 45);
             this.guna2Button2.TabIndex = 28;
             this.guna2Button2.Text = "Generate";
-            this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click_1);
+            this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click);
             // 
             // MyAES
             // 
@@ -357,5 +359,6 @@
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox3;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel7;
         private Guna.UI2.WinForms.Guna2Button guna2Button2;
+        private Guna.UI2.WinForms.Guna2AnimateWindow guna2AnimateWindow1;
     }
 }

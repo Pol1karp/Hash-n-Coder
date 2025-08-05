@@ -295,7 +295,7 @@
   <data name="guna2ImageButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vgAADr4B6kKxwAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAACbSSURBVHhe7d17
+        vAAADrwBlbxySQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAACbSSURBVHhe7d17
         8LxnXd5xSAIJOQ0UEoMcVKZhqpLUcLBAqaByBq2t5AAMZxgFq/yjQ6eOhUAFifAHtZOQEGYqlCDQaTvT
         g63VYRBJQggQEgGFUigxkBDKoTmQA9BenwGmGC/CL7/72evz3M++XzPvGQfk2U3uz727391nn70TAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -464,4 +464,7 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAGAv3elO/w/IXjKtOIgCvgAAAABJRU5ErkJggg==
 </value>
   </data>
+  <metadata name="guna2AnimateWindow1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>
