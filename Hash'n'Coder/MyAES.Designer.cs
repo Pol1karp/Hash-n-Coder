@@ -63,6 +63,7 @@
             this.guna2Button1.Size = new System.Drawing.Size(280, 45);
             this.guna2Button1.TabIndex = 23;
             this.guna2Button1.Text = "Encrypt\\Decrypt";
+            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
             // guna2ImageButton2
             // 
@@ -307,8 +308,9 @@
             this.guna2Button2.Size = new System.Drawing.Size(244, 45);
             this.guna2Button2.TabIndex = 28;
             this.guna2Button2.Text = "Generate";
+            this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click_1);
             // 
-            // AES
+            // MyAES
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -329,7 +331,7 @@
             this.Controls.Add(this.guna2ComboBox2);
             this.Controls.Add(this.guna2HtmlLabel1);
             this.Controls.Add(this.guna2ComboBox1);
-            this.Name = "AES";
+            this.Name = "MyAES";
             this.Size = new System.Drawing.Size(884, 636);
             this.ResumeLayout(false);
             this.PerformLayout();
