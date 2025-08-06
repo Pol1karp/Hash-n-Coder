@@ -58,13 +58,18 @@ namespace Hash_n_Coder
             using (Aes aes = Aes.Create())
             {
                 aes.Key = keyBytes;
-                aes.IV = keyBytes; // IV = KEY как по ТЗ
                 aes.Mode = CipherMode.CBC;
                 aes.Padding = PaddingMode.PKCS7;
+                aes.GenerateIV();
+                byte[] iv = aes.IV;
 
                 using (ICryptoTransform encryptor = aes.CreateEncryptor())
                 {
-                    byte[] result = encryptor.TransformFinalBlock(inputBytes, 0, inputBytes.Length);
+                    byte[] cipherBytes = encryptor.TransformFinalBlock(inputBytes, 0, inputBytes.Length);
+                    byte[] result = new byte[iv.Length + cipherBytes.Length];
+                    Array.Copy(iv, 0, result, 0, iv.Length);
+                    Array.Copy(cipherBytes, 0, result, iv.Length, cipherBytes.Length);
+
                     return Convert.ToBase64String(result);
                 }
             }
@@ -73,18 +78,25 @@ namespace Hash_n_Coder
         private string DecryptAES_CBC(string cipherText, string key)
         {
             byte[] keyBytes = PrepareKey(key);
-            byte[] inputBytes = Convert.FromBase64String(cipherText);
+            byte[] fullCipher = Convert.FromBase64String(cipherText);
 
             using (Aes aes = Aes.Create())
             {
                 aes.Key = keyBytes;
-                aes.IV = keyBytes; // IV = KEY как по ТЗ
                 aes.Mode = CipherMode.CBC;
                 aes.Padding = PaddingMode.PKCS7;
 
+                // IV у нас в первых 16 байтах
+                byte[] iv = new byte[16];
+                Array.Copy(fullCipher, 0, iv, 0, iv.Length);
+                aes.IV = iv;
+
+                byte[] cipherBytes = new byte[fullCipher.Length - iv.Length];
+                Array.Copy(fullCipher, iv.Length, cipherBytes, 0, cipherBytes.Length);
+
                 using (ICryptoTransform decryptor = aes.CreateDecryptor())
                 {
-                    byte[] result = decryptor.TransformFinalBlock(inputBytes, 0, inputBytes.Length);
+                    byte[] result = decryptor.TransformFinalBlock(cipherBytes, 0, cipherBytes.Length);
                     return Encoding.UTF8.GetString(result);
                 }
             }
@@ -95,30 +107,26 @@ namespace Hash_n_Coder
             int keySizeBits = int.Parse(guna2ComboBox3.SelectedItem?.ToString() ?? "128");
             int keySizeBytes = keySizeBits / 8;
 
-            // Берем SHA-256 от ключа и обрезаем
-            using (SHA256 sha = SHA256.Create())
+            try
             {
-                byte[] hash = sha.ComputeHash(Encoding.UTF8.GetBytes(key));
-                byte[] keyBytes = new byte[keySizeBytes];
-                Array.Copy(hash, keyBytes, keySizeBytes);
+                byte[] keyBytes = Convert.FromBase64String(key);
+
+                if (keyBytes.Length != keySizeBytes)
+                    throw new Exception($"Ключ должен быть ровно {keySizeBytes} байт.");
+
                 return keyBytes;
             }
-        }
-
-
-        private void guna2ImageButton1_Click(object sender, EventArgs e)
-        {
-            if (Clipboard.ContainsText())
+            catch
             {
-                guna2TextBox1.Text = Clipboard.GetText();
-            }
-        }
+                using (SHA256 sha = SHA256.Create())
+                {
+                    byte[] hash = sha.ComputeHash(Encoding.UTF8.GetBytes(key));
 
-        private void guna2ImageButton2_Click(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(guna2TextBox2.Text))
-            {
-                Clipboard.SetText(guna2TextBox2.Text);
+                    byte[] keyBytes = new byte[keySizeBytes];
+                    Array.Copy(hash, keyBytes, keySizeBytes);
+
+                    return keyBytes;
+                }
             }
         }
 
@@ -134,24 +142,16 @@ namespace Hash_n_Coder
                 if (algorithm == "AES-ECB")
                 {
                     if (mode == "Шифровать")
-                    {
                         guna2TextBox2.Text = EncryptAES_ECB(inputText, key);
-                    }
                     else if (mode == "Дешифровать")
-                    {
                         guna2TextBox2.Text = DecryptAES_ECB(inputText, key);
-                    }
                 }
                 else if (algorithm == "AES-CBC")
                 {
                     if (mode == "Шифровать")
-                    {
                         guna2TextBox2.Text = EncryptAES_CBC(inputText, key);
-                    }
                     else if (mode == "Дешифровать")
-                    {
                         guna2TextBox2.Text = DecryptAES_CBC(inputText, key);
-                    }
                 }
             }
             catch (Exception ex)
@@ -172,6 +172,22 @@ namespace Hash_n_Coder
             }
 
             guna2TextBox3.Text = Convert.ToBase64String(randomKey);
+        }
+
+        private void guna2ImageButton1_Click(object sender, EventArgs e)
+        {
+            if (Clipboard.ContainsText())
+            {
+                guna2TextBox1.Text = Clipboard.GetText();
+            }
+        }
+
+        private void guna2ImageButton2_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(guna2TextBox2.Text))
+            {
+                Clipboard.SetText(guna2TextBox2.Text);
+            }
         }
     }
 }
