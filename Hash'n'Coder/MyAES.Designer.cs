@@ -225,7 +225,7 @@
             this.guna2ComboBox1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.guna2ComboBox1.ItemHeight = 30;
             this.guna2ComboBox1.Items.AddRange(new object[] {
-            "AES-ECB ",
+            "AES-ECB",
             "AES-CBC"});
             this.guna2ComboBox1.Location = new System.Drawing.Point(32, 90);
             this.guna2ComboBox1.Name = "guna2ComboBox1";
