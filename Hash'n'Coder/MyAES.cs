@@ -2,6 +2,7 @@
 using System.Text;
 using System.Security.Cryptography;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Hash_n_Coder
 {
@@ -15,7 +16,6 @@ namespace Hash_n_Coder
         private string EncryptAES_ECB(string plainText, string key)
         {
             byte[] keyBytes = PrepareKey(key);
-            byte[] inputBytes = Encoding.UTF8.GetBytes(plainText);
 
             using (Aes aes = Aes.Create())
             {
@@ -25,8 +25,17 @@ namespace Hash_n_Coder
 
                 using (ICryptoTransform encryptor = aes.CreateEncryptor())
                 {
-                    byte[] result = encryptor.TransformFinalBlock(inputBytes, 0, inputBytes.Length);
-                    return Convert.ToBase64String(result);
+                    using (MemoryStream msEncrypt = new MemoryStream())
+                    {
+                        using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
+                        {
+                            using (StreamWriter swEncrypt = new StreamWriter(csEncrypt))
+                            {
+                                swEncrypt.Write(plainText);
+                            }
+                        }
+                        return Convert.ToBase64String(msEncrypt.ToArray());
+                    }
                 }
             }
         }
@@ -34,7 +43,7 @@ namespace Hash_n_Coder
         private string DecryptAES_ECB(string cipherText, string key)
         {
             byte[] keyBytes = PrepareKey(key);
-            byte[] inputBytes = Convert.FromBase64String(cipherText);
+            byte[] cipherBytes = Convert.FromBase64String(cipherText);
 
             using (Aes aes = Aes.Create())
             {
@@ -44,8 +53,16 @@ namespace Hash_n_Coder
 
                 using (ICryptoTransform decryptor = aes.CreateDecryptor())
                 {
-                    byte[] result = decryptor.TransformFinalBlock(inputBytes, 0, inputBytes.Length);
-                    return Encoding.UTF8.GetString(result);
+                    using (MemoryStream msDecrypt = new MemoryStream(cipherBytes))
+                    {
+                        using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
+                        {
+                            using (StreamReader srDecrypt = new StreamReader(csDecrypt))
+                            {
+                                return srDecrypt.ReadToEnd();
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -86,7 +103,6 @@ namespace Hash_n_Coder
                 aes.Mode = CipherMode.CBC;
                 aes.Padding = PaddingMode.PKCS7;
 
-                // IV у нас в первых 16 байтах
                 byte[] iv = new byte[16];
                 Array.Copy(fullCipher, 0, iv, 0, iv.Length);
                 aes.IV = iv;
@@ -174,7 +190,7 @@ namespace Hash_n_Coder
             guna2TextBox3.Text = Convert.ToBase64String(randomKey);
         }
 
-        private void guna2ImageButton1_Click(object sender, EventArgs e)
+        private void guna2ImageButton1_Click_1(object sender, EventArgs e)
         {
             if (Clipboard.ContainsText())
             {
@@ -182,9 +198,9 @@ namespace Hash_n_Coder
             }
         }
 
-        private void guna2ImageButton2_Click(object sender, EventArgs e)
+        private void guna2ImageButton2_Click_1(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(guna2TextBox2.Text))
+            if(!string.IsNullOrEmpty(guna2TextBox2.Text))
             {
                 Clipboard.SetText(guna2TextBox2.Text);
             }
