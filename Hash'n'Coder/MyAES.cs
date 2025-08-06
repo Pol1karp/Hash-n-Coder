@@ -16,6 +16,7 @@ namespace Hash_n_Coder
         private string EncryptAES_ECB(string plainText, string key)
         {
             byte[] keyBytes = PrepareKey(key);
+            byte[] inputBytes = Encoding.UTF8.GetBytes(plainText);
 
             using (Aes aes = Aes.Create())
             {
@@ -25,20 +26,12 @@ namespace Hash_n_Coder
 
                 using (ICryptoTransform encryptor = aes.CreateEncryptor())
                 {
-                    using (MemoryStream msEncrypt = new MemoryStream())
-                    {
-                        using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
-                        {
-                            using (StreamWriter swEncrypt = new StreamWriter(csEncrypt))
-                            {
-                                swEncrypt.Write(plainText);
-                            }
-                        }
-                        return Convert.ToBase64String(msEncrypt.ToArray());
-                    }
+                    byte[] encrypted = encryptor.TransformFinalBlock(inputBytes, 0, inputBytes.Length);
+                    return Convert.ToBase64String(encrypted);
                 }
             }
         }
+
 
         private string DecryptAES_ECB(string cipherText, string key)
         {
@@ -51,22 +44,15 @@ namespace Hash_n_Coder
                 aes.Mode = CipherMode.ECB;
                 aes.Padding = PaddingMode.PKCS7;
 
-                using (ICryptoTransform decryptor = aes.CreateDecryptor())
+                using (MemoryStream ms = new MemoryStream(cipherBytes))
+                using (CryptoStream cs = new CryptoStream(ms, aes.CreateDecryptor(), CryptoStreamMode.Read))
+                using (StreamReader sr = new StreamReader(cs, Encoding.UTF8))
                 {
-                    using (MemoryStream msDecrypt = new MemoryStream(cipherBytes))
-                    {
-                        using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
-                        {
-                            using (StreamReader srDecrypt = new StreamReader(csDecrypt))
-                            {
-                                return srDecrypt.ReadToEnd();
-                            }
-                        }
-                    }
+                    return sr.ReadToEnd();
                 }
             }
         }
-
+      
         private string EncryptAES_CBC(string plainText, string key)
         {
             byte[] keyBytes = PrepareKey(key);

@@ -16,5 +16,21 @@ namespace Hash_n_Coder
         {
             InitializeComponent();
         }
+
+        private void guna2ImageButtonPaste_Click(object sender, EventArgs e)
+        {
+            if (Clipboard.ContainsText())
+            {
+                guna2TextBox1.Text = Clipboard.GetText();
+            }
+        }
+
+        private void guna2ImageButtonCopy_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(guna2TextBox2.Text))
+            {
+                Clipboard.SetText(guna2TextBox2.Text);
+            }
+        }
     }
 }

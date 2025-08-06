@@ -82,6 +82,7 @@
             this.guna2ImageButton1.PressedState.ImageSize = new System.Drawing.Size(34, 34);
             this.guna2ImageButton1.Size = new System.Drawing.Size(50, 33);
             this.guna2ImageButton1.TabIndex = 21;
+            this.guna2ImageButton1.Click += new System.EventHandler(this.guna2ImageButton1_Click);
             // 
             // guna2HtmlLabel5
             // 
@@ -158,7 +159,7 @@
             this.guna2HtmlLabel1.TabIndex = 13;
             this.guna2HtmlLabel1.Text = "Hashing";
             // 
-            // Hashing
+            // MyHashing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -170,7 +171,7 @@
             this.Controls.Add(this.guna2TextBox2);
             this.Controls.Add(this.guna2TextBox1);
             this.Controls.Add(this.guna2HtmlLabel1);
-            this.Name = "Hashing";
+            this.Name = "MyHashing";
             this.Size = new System.Drawing.Size(884, 636);
             this.ResumeLayout(false);
             this.PerformLayout();
