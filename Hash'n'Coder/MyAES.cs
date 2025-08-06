@@ -13,46 +13,65 @@ namespace Hash_n_Coder
             InitializeComponent();
         }
 
-        private string EncryptAES_ECB(string plainText, string key)
+        public static string Encrypt(string plainText, string key)
         {
-            byte[] keyBytes = PrepareKey(key);
-            byte[] inputBytes = Encoding.UTF8.GetBytes(plainText);
+            if (string.IsNullOrEmpty(plainText))
+                throw new ArgumentNullException(nameof(plainText));
+            if (string.IsNullOrEmpty(key))
+                throw new ArgumentNullException(nameof(key));
 
             using (Aes aes = Aes.Create())
             {
-                aes.Key = keyBytes;
+                aes.Key = Encoding.UTF8.GetBytes(key);
                 aes.Mode = CipherMode.ECB;
-                aes.Padding = PaddingMode.PKCS7;
+                aes.Padding = PaddingMode.PKCS7; // Или другой подходящий режим
 
-                using (ICryptoTransform encryptor = aes.CreateEncryptor())
+                ICryptoTransform encryptor = aes.CreateEncryptor(aes.Key, aes.IV);
+
+                using (MemoryStream msEncrypt = new MemoryStream())
                 {
-                    byte[] encrypted = encryptor.TransformFinalBlock(inputBytes, 0, inputBytes.Length);
-                    return Convert.ToBase64String(encrypted);
+                    using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
+                    {
+                        using (StreamWriter swEncrypt = new StreamWriter(csEncrypt))
+                        {
+                            swEncrypt.Write(plainText);
+                        }
+                        byte[] encryptedBytes = msEncrypt.ToArray();
+                        return Convert.ToBase64String(encryptedBytes);
+                    }
                 }
             }
         }
 
 
-        private string DecryptAES_ECB(string cipherText, string key)
+        public static string Decrypt(string cipherText, string key)
         {
-            byte[] keyBytes = PrepareKey(key);
-            byte[] cipherBytes = Convert.FromBase64String(cipherText);
+            if (string.IsNullOrEmpty(cipherText))
+                throw new ArgumentNullException(nameof(cipherText));
+            if (string.IsNullOrEmpty(key))
+                throw new ArgumentNullException(nameof(key));
 
             using (Aes aes = Aes.Create())
             {
-                aes.Key = keyBytes;
+                aes.Key = Encoding.UTF8.GetBytes(key);
                 aes.Mode = CipherMode.ECB;
-                aes.Padding = PaddingMode.PKCS7;
+                aes.Padding = PaddingMode.PKCS7; // Должен совпадать с режимом шифрования
 
-                using (MemoryStream ms = new MemoryStream(cipherBytes))
-                using (CryptoStream cs = new CryptoStream(ms, aes.CreateDecryptor(), CryptoStreamMode.Read))
-                using (StreamReader sr = new StreamReader(cs, Encoding.UTF8))
+                ICryptoTransform decryptor = aes.CreateDecryptor(aes.Key, aes.IV);
+
+                using (MemoryStream msDecrypt = new MemoryStream(Convert.FromBase64String(cipherText)))
                 {
-                    return sr.ReadToEnd();
+                    using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
+                    {
+                        using (StreamReader srDecrypt = new StreamReader(csDecrypt))
+                        {
+                            return srDecrypt.ReadToEnd();
+                        }
+                    }
                 }
             }
         }
-      
+
         private string EncryptAES_CBC(string plainText, string key)
         {
             byte[] keyBytes = PrepareKey(key);
@@ -144,9 +163,9 @@ namespace Hash_n_Coder
                 if (algorithm == "AES-ECB")
                 {
                     if (mode == "Шифровать")
-                        guna2TextBox2.Text = EncryptAES_ECB(inputText, key);
+                        guna2TextBox2.Text = Encrypt(inputText, key);
                     else if (mode == "Дешифровать")
-                        guna2TextBox2.Text = DecryptAES_ECB(inputText, key);
+                        guna2TextBox2.Text = Decrypt(inputText, key);
                 }
                 else if (algorithm == "AES-CBC")
                 {

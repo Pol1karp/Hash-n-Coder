@@ -54,6 +54,7 @@
             this.guna2Button1.Size = new System.Drawing.Size(280, 45);
             this.guna2Button1.TabIndex = 23;
             this.guna2Button1.Text = "Get Hashes";
+            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
             // guna2ImageButton2
             // 
@@ -82,7 +83,6 @@
             this.guna2ImageButton1.PressedState.ImageSize = new System.Drawing.Size(34, 34);
             this.guna2ImageButton1.Size = new System.Drawing.Size(50, 33);
             this.guna2ImageButton1.TabIndex = 21;
-            this.guna2ImageButton1.Click += new System.EventHandler(this.guna2ImageButton1_Click);
             // 
             // guna2HtmlLabel5
             // 
