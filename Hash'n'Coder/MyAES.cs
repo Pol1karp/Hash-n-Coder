@@ -125,7 +125,7 @@ namespace Hash_n_Coder
 
         private byte[] PrepareKey(string key)
         {
-            int keySizeBits = int.Parse(guna2ComboBox3.SelectedItem?.ToString() ?? "128");
+            int keySizeBits = int.Parse(KeyBox.SelectedItem?.ToString() ?? "128");
             int keySizeBytes = keySizeBits / 8;
 
             try
@@ -153,26 +153,26 @@ namespace Hash_n_Coder
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-            string mode = guna2ComboBox2.SelectedItem?.ToString();
-            string algorithm = guna2ComboBox1.SelectedItem?.ToString();
-            string key = guna2TextBox3.Text;
-            string inputText = guna2TextBox1.Text;
+            string mode = ShifrBox.SelectedItem?.ToString();
+            string algorithm = AlgoritmBox.SelectedItem?.ToString();
+            string key = KeyTextBox.Text;
+            string inputText = InputTextBox.Text;
 
             try
             {
                 if (algorithm == "AES-ECB")
                 {
                     if (mode == "Шифровать")
-                        guna2TextBox2.Text = Encrypt(inputText, key);
+                        OutputTextBox.Text = Encrypt(inputText, key);
                     else if (mode == "Дешифровать")
-                        guna2TextBox2.Text = Decrypt(inputText, key);
+                        OutputTextBox.Text = Decrypt(inputText, key);
                 }
                 else if (algorithm == "AES-CBC")
                 {
                     if (mode == "Шифровать")
-                        guna2TextBox2.Text = EncryptAES_CBC(inputText, key);
+                        OutputTextBox.Text = EncryptAES_CBC(inputText, key);
                     else if (mode == "Дешифровать")
-                        guna2TextBox2.Text = DecryptAES_CBC(inputText, key);
+                        OutputTextBox.Text = DecryptAES_CBC(inputText, key);
                 }
             }
             catch (Exception ex)
@@ -183,7 +183,7 @@ namespace Hash_n_Coder
 
         private void guna2Button2_Click(object sender, EventArgs e)
         {
-            int keySizeBits = int.Parse(guna2ComboBox3.SelectedItem?.ToString() ?? "128");
+            int keySizeBits = int.Parse(KeyBox.SelectedItem?.ToString() ?? "128");
             int keySizeBytes = keySizeBits / 8;
 
             byte[] randomKey = new byte[keySizeBytes];
@@ -192,22 +192,22 @@ namespace Hash_n_Coder
                 rng.GetBytes(randomKey);
             }
 
-            guna2TextBox3.Text = Convert.ToBase64String(randomKey);
+            KeyTextBox.Text = Convert.ToBase64String(randomKey);
         }
 
         private void guna2ImageButton1_Click_1(object sender, EventArgs e)
         {
             if (Clipboard.ContainsText())
             {
-                guna2TextBox1.Text = Clipboard.GetText();
+                InputTextBox.Text = Clipboard.GetText();
             }
         }
 
         private void guna2ImageButton2_Click_1(object sender, EventArgs e)
         {
-            if(!string.IsNullOrEmpty(guna2TextBox2.Text))
+            if(!string.IsNullOrEmpty(OutputTextBox.Text))
             {
-                Clipboard.SetText(guna2TextBox2.Text);
+                Clipboard.SetText(OutputTextBox.Text);
             }
         }
     }
