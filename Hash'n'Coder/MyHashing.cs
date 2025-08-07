@@ -22,21 +22,21 @@ namespace Hash_n_Coder
         {
             if (Clipboard.ContainsText())
             {
-                guna2TextBox1.Text = Clipboard.GetText();
+                InputTextBox.Text = Clipboard.GetText();
             }
         }
 
         private void guna2ImageButtonCopy_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(guna2TextBox2.Text))
+            if (!string.IsNullOrEmpty(OutputTextBox.Text))
             {
-                Clipboard.SetText(guna2TextBox2.Text);
+                Clipboard.SetText(OutputTextBox.Text);
             }
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-            string inputText = guna2TextBox1.Text;
+            string inputText = InputTextBox.Text;
             StringBuilder sb = new StringBuilder();
 
             sb.AppendLine("MD5:     " + ComputeHash(inputText, MD5.Create()));
@@ -45,7 +45,7 @@ namespace Hash_n_Coder
             sb.AppendLine("SHA-384: " + ComputeHash(inputText, SHA384.Create()));
             sb.AppendLine("SHA-512: " + ComputeHash(inputText, SHA512.Create()));
 
-            guna2TextBox2.Text = sb.ToString();
+            OutputTextBox.Text = sb.ToString();
         }
         private string ComputeHash(string input, HashAlgorithm algorithm)
         {
