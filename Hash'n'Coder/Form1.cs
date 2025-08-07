@@ -45,10 +45,5 @@ namespace Hash_n_Coder
         {
             LoadControl(new MyHashing());
         }
-
-        private void guna2Panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }

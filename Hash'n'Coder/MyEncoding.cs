@@ -17,14 +17,12 @@ namespace Hash_n_Coder
         {
             InitializeComponent();
         }
-
         private void guna2Button1_Click(object sender, EventArgs e)
         {
             string input = InputTextBox.Text;
             string algorithm = AlgoritmBox.SelectedItem?.ToString();
             string mode = CodeDecodeBox.SelectedItem?.ToString();
             string output = "";
-
             try
             {
                 if (algorithm == "Base64")
@@ -81,9 +79,6 @@ namespace Hash_n_Coder
                 MessageBox.Show("Ошибка: " + ex.Message);
             }
         }
-        
-
-
         private void guna2ImageButton1_Click(object sender, EventArgs e)
         {
             if (Clipboard.ContainsText())
@@ -91,7 +86,6 @@ namespace Hash_n_Coder
                 InputTextBox.Text = Clipboard.GetText();
             }
         }
-
         private void guna2ImageButton2_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(OutputTextBox.Text))

@@ -12,20 +12,17 @@ namespace Hash_n_Coder
         {
             InitializeComponent();
         }
-
         public static string Encrypt(string plainText, string key)
         {
             if (string.IsNullOrEmpty(plainText))
                 throw new ArgumentNullException(nameof(plainText));
             if (string.IsNullOrEmpty(key))
                 throw new ArgumentNullException(nameof(key));
-
             using (Aes aes = Aes.Create())
             {
                 aes.Key = Encoding.UTF8.GetBytes(key);
                 aes.Mode = CipherMode.ECB;
-                aes.Padding = PaddingMode.PKCS7; // Или другой подходящий режим
-
+                aes.Padding = PaddingMode.PKCS7; 
                 ICryptoTransform encryptor = aes.CreateEncryptor(aes.Key, aes.IV);
 
                 using (MemoryStream msEncrypt = new MemoryStream())
@@ -42,23 +39,18 @@ namespace Hash_n_Coder
                 }
             }
         }
-
-
         public static string Decrypt(string cipherText, string key)
         {
             if (string.IsNullOrEmpty(cipherText))
                 throw new ArgumentNullException(nameof(cipherText));
             if (string.IsNullOrEmpty(key))
                 throw new ArgumentNullException(nameof(key));
-
             using (Aes aes = Aes.Create())
             {
                 aes.Key = Encoding.UTF8.GetBytes(key);
                 aes.Mode = CipherMode.ECB;
-                aes.Padding = PaddingMode.PKCS7; // Должен совпадать с режимом шифрования
-
+                aes.Padding = PaddingMode.PKCS7;
                 ICryptoTransform decryptor = aes.CreateDecryptor(aes.Key, aes.IV);
-
                 using (MemoryStream msDecrypt = new MemoryStream(Convert.FromBase64String(cipherText)))
                 {
                     using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
@@ -71,12 +63,10 @@ namespace Hash_n_Coder
                 }
             }
         }
-
         private string EncryptAES_CBC(string plainText, string key)
         {
             byte[] keyBytes = PrepareKey(key);
             byte[] inputBytes = Encoding.UTF8.GetBytes(plainText);
-
             using (Aes aes = Aes.Create())
             {
                 aes.Key = keyBytes;
@@ -84,7 +74,6 @@ namespace Hash_n_Coder
                 aes.Padding = PaddingMode.PKCS7;
                 aes.GenerateIV();
                 byte[] iv = aes.IV;
-
                 using (ICryptoTransform encryptor = aes.CreateEncryptor())
                 {
                     byte[] cipherBytes = encryptor.TransformFinalBlock(inputBytes, 0, inputBytes.Length);
@@ -96,25 +85,20 @@ namespace Hash_n_Coder
                 }
             }
         }
-
         private string DecryptAES_CBC(string cipherText, string key)
         {
             byte[] keyBytes = PrepareKey(key);
             byte[] fullCipher = Convert.FromBase64String(cipherText);
-
             using (Aes aes = Aes.Create())
             {
                 aes.Key = keyBytes;
                 aes.Mode = CipherMode.CBC;
                 aes.Padding = PaddingMode.PKCS7;
-
                 byte[] iv = new byte[16];
                 Array.Copy(fullCipher, 0, iv, 0, iv.Length);
                 aes.IV = iv;
-
                 byte[] cipherBytes = new byte[fullCipher.Length - iv.Length];
                 Array.Copy(fullCipher, iv.Length, cipherBytes, 0, cipherBytes.Length);
-
                 using (ICryptoTransform decryptor = aes.CreateDecryptor())
                 {
                     byte[] result = decryptor.TransformFinalBlock(cipherBytes, 0, cipherBytes.Length);
@@ -122,16 +106,13 @@ namespace Hash_n_Coder
                 }
             }
         }
-
         private byte[] PrepareKey(string key)
         {
             int keySizeBits = int.Parse(KeyBox.SelectedItem?.ToString() ?? "128");
             int keySizeBytes = keySizeBits / 8;
-
             try
             {
                 byte[] keyBytes = Convert.FromBase64String(key);
-
                 if (keyBytes.Length != keySizeBytes)
                     throw new Exception($"Ключ должен быть ровно {keySizeBytes} байт.");
 
@@ -150,14 +131,12 @@ namespace Hash_n_Coder
                 }
             }
         }
-
         private void guna2Button1_Click(object sender, EventArgs e)
         {
             string mode = ShifrBox.SelectedItem?.ToString();
             string algorithm = AlgoritmBox.SelectedItem?.ToString();
             string key = KeyTextBox.Text;
             string inputText = InputTextBox.Text;
-
             try
             {
                 if (algorithm == "AES-ECB")
@@ -180,21 +159,17 @@ namespace Hash_n_Coder
                 MessageBox.Show("Ошибка: " + ex.Message);
             }
         }
-
         private void guna2Button2_Click(object sender, EventArgs e)
         {
             int keySizeBits = int.Parse(KeyBox.SelectedItem?.ToString() ?? "128");
             int keySizeBytes = keySizeBits / 8;
-
             byte[] randomKey = new byte[keySizeBytes];
             using (var rng = new RNGCryptoServiceProvider())
             {
                 rng.GetBytes(randomKey);
             }
-
             KeyTextBox.Text = Convert.ToBase64String(randomKey);
         }
-
         private void guna2ImageButton1_Click_1(object sender, EventArgs e)
         {
             if (Clipboard.ContainsText())
@@ -202,7 +177,6 @@ namespace Hash_n_Coder
                 InputTextBox.Text = Clipboard.GetText();
             }
         }
-
         private void guna2ImageButton2_Click_1(object sender, EventArgs e)
         {
             if(!string.IsNullOrEmpty(OutputTextBox.Text))

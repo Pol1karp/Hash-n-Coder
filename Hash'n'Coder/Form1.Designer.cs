@@ -112,7 +112,6 @@
             this.MainPanel.Name = "MainPanel";
             this.MainPanel.Size = new System.Drawing.Size(884, 636);
             this.MainPanel.TabIndex = 2;
-            this.MainPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel1_Paint);
             // 
             // Form1
             // 
