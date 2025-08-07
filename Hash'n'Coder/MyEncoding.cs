@@ -19,12 +19,13 @@ namespace Hash_n_Coder
         }
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-            string input = InputTextBox.Text;
-            string algorithm = AlgoritmBox.SelectedItem?.ToString();
-            string mode = CodeDecodeBox.SelectedItem?.ToString();
-            string output = "";
             try
             {
+                string input = InputTextBox.Text;
+                string algorithm = AlgoritmBox.SelectedItem?.ToString();
+                string mode = CodeDecodeBox.SelectedItem?.ToString();
+                string output = "";
+
                 if (algorithm == "Base64")
                 {
                     if (mode == "Encode")
@@ -73,10 +74,14 @@ namespace Hash_n_Coder
                 }
 
                 OutputTextBox.Text = output;
+
+                OutputTextBox.Text = "Успешно!";
+                OutputTextBox.ForeColor = Color.Green;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ошибка: " + ex.Message);
+                OutputTextBox.Text = $"Ошибка: {ex.Message}";
+                OutputTextBox.ForeColor = Color.Red;
             }
         }
         private void guna2ImageButton1_Click(object sender, EventArgs e)

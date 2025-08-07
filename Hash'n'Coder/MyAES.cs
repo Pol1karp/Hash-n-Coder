@@ -3,6 +3,7 @@ using System.Text;
 using System.Security.Cryptography;
 using System.Windows.Forms;
 using System.IO;
+using System.Drawing;
 
 namespace Hash_n_Coder
 {
@@ -14,6 +15,7 @@ namespace Hash_n_Coder
         }
         public static string Encrypt(string plainText, string key)
         {
+
             if (string.IsNullOrEmpty(plainText))
                 throw new ArgumentNullException(nameof(plainText));
             if (string.IsNullOrEmpty(key))
@@ -22,7 +24,7 @@ namespace Hash_n_Coder
             {
                 aes.Key = Encoding.UTF8.GetBytes(key);
                 aes.Mode = CipherMode.ECB;
-                aes.Padding = PaddingMode.PKCS7; 
+                aes.Padding = PaddingMode.PKCS7;
                 ICryptoTransform encryptor = aes.CreateEncryptor(aes.Key, aes.IV);
 
                 using (MemoryStream msEncrypt = new MemoryStream())
@@ -108,6 +110,7 @@ namespace Hash_n_Coder
         }
         private byte[] PrepareKey(string key)
         {
+
             int keySizeBits = int.Parse(KeyBox.SelectedItem?.ToString() ?? "128");
             int keySizeBytes = keySizeBits / 8;
             try
@@ -133,12 +136,13 @@ namespace Hash_n_Coder
         }
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-            string mode = ShifrBox.SelectedItem?.ToString();
-            string algorithm = AlgoritmBox.SelectedItem?.ToString();
-            string key = KeyTextBox.Text;
-            string inputText = InputTextBox.Text;
-            try
-            {
+            try {
+                string mode = ShifrBox.SelectedItem?.ToString();
+                string algorithm = AlgoritmBox.SelectedItem?.ToString();
+                string key = KeyTextBox.Text;
+                string inputText = InputTextBox.Text;
+
+
                 if (algorithm == "AES-ECB")
                 {
                     if (mode == "Шифровать")
@@ -153,22 +157,36 @@ namespace Hash_n_Coder
                     else if (mode == "Дешифровать")
                         OutputTextBox.Text = DecryptAES_CBC(inputText, key);
                 }
+                OutputTextBox.Text = "Успешно!"; 
+                OutputTextBox.ForeColor = Color.Green;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ошибка: " + ex.Message);
+                OutputTextBox.Text = $"Ошибка: {ex.Message}";
+                OutputTextBox.ForeColor = Color.Red;
             }
+
         }
         private void guna2Button2_Click(object sender, EventArgs e)
         {
-            int keySizeBits = int.Parse(KeyBox.SelectedItem?.ToString() ?? "128");
-            int keySizeBytes = keySizeBits / 8;
-            byte[] randomKey = new byte[keySizeBytes];
-            using (var rng = new RNGCryptoServiceProvider())
+            try
             {
-                rng.GetBytes(randomKey);
+                int keySizeBits = int.Parse(KeyBox.SelectedItem?.ToString() ?? "128");
+                int keySizeBytes = keySizeBits / 8;
+                byte[] randomKey = new byte[keySizeBytes];
+                using (var rng = new RNGCryptoServiceProvider())
+                {
+                    rng.GetBytes(randomKey);
+                }
+                KeyTextBox.Text = Convert.ToBase64String(randomKey);
+                OutputTextBox.Text = "Успешно!";
+                OutputTextBox.ForeColor = Color.Green;
             }
-            KeyTextBox.Text = Convert.ToBase64String(randomKey);
+            catch (Exception ex)
+            {
+                OutputTextBox.Text = $"Ошибка: {ex.Message}";
+                OutputTextBox.ForeColor = Color.Red;
+            }
         }
         private void guna2ImageButton1_Click_1(object sender, EventArgs e)
         {
@@ -179,7 +197,7 @@ namespace Hash_n_Coder
         }
         private void guna2ImageButton2_Click_1(object sender, EventArgs e)
         {
-            if(!string.IsNullOrEmpty(OutputTextBox.Text))
+            if (!string.IsNullOrEmpty(OutputTextBox.Text))
             {
                 Clipboard.SetText(OutputTextBox.Text);
             }

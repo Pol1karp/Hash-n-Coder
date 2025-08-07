@@ -36,16 +36,26 @@ namespace Hash_n_Coder
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-            string inputText = InputTextBox.Text;
-            StringBuilder sb = new StringBuilder();
+            try
+            {
+                string inputText = InputTextBox.Text;
+                StringBuilder sb = new StringBuilder();
 
-            sb.AppendLine("MD5:     " + ComputeHash(inputText, MD5.Create()));
-            sb.AppendLine("SHA-1:   " + ComputeHash(inputText, SHA1.Create()));
-            sb.AppendLine("SHA-256: " + ComputeHash(inputText, SHA256.Create()));
-            sb.AppendLine("SHA-384: " + ComputeHash(inputText, SHA384.Create()));
-            sb.AppendLine("SHA-512: " + ComputeHash(inputText, SHA512.Create()));
+                sb.AppendLine("MD5:     " + ComputeHash(inputText, MD5.Create()));
+                sb.AppendLine("SHA-1:   " + ComputeHash(inputText, SHA1.Create()));
+                sb.AppendLine("SHA-256: " + ComputeHash(inputText, SHA256.Create()));
+                sb.AppendLine("SHA-384: " + ComputeHash(inputText, SHA384.Create()));
+                sb.AppendLine("SHA-512: " + ComputeHash(inputText, SHA512.Create()));
 
-            OutputTextBox.Text = sb.ToString();
+                OutputTextBox.Text = sb.ToString();
+                OutputTextBox.Text = "Успешно!"; 
+                OutputTextBox.ForeColor = Color.Green;
+            }
+            catch (Exception ex)
+            {
+                OutputTextBox.Text = $"Ошибка: {ex.Message}";
+                OutputTextBox.ForeColor = Color.Red;
+            }
         }
         private string ComputeHash(string input, HashAlgorithm algorithm)
         {
