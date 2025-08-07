@@ -20,9 +20,9 @@ namespace Hash_n_Coder
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-            string input = guna2TextBox1.Text;
-            string algorithm = guna2ComboBox1.SelectedItem?.ToString();
-            string mode = guna2ComboBox2.SelectedItem?.ToString();
+            string input = InputTextBox.Text;
+            string algorithm = AlgoritmBox.SelectedItem?.ToString();
+            string mode = CodeDecodeBox.SelectedItem?.ToString();
             string output = "";
 
             try
@@ -74,7 +74,7 @@ namespace Hash_n_Coder
                     }
                 }
 
-                guna2TextBox2.Text = output;
+                OutputTextBox.Text = output;
             }
             catch (Exception ex)
             {
@@ -88,15 +88,15 @@ namespace Hash_n_Coder
         {
             if (Clipboard.ContainsText())
             {
-                guna2TextBox1.Text = Clipboard.GetText();
+                InputTextBox.Text = Clipboard.GetText();
             }
         }
 
         private void guna2ImageButton2_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(guna2TextBox2.Text))
+            if (!string.IsNullOrEmpty(OutputTextBox.Text))
             {
-                Clipboard.SetText(guna2TextBox2.Text);
+                Clipboard.SetText(OutputTextBox.Text);
             }
         }
     }
