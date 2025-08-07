@@ -34,12 +34,14 @@
             this.AESButton = new Guna.UI2.WinForms.Guna2Button();
             this.EncodingButton = new Guna.UI2.WinForms.Guna2Button();
             this.MainPanel = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.NavigationPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // NavigationPanel
             // 
             this.NavigationPanel.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.NavigationPanel.Controls.Add(this.guna2HtmlLabel1);
             this.NavigationPanel.Controls.Add(this.HashingButton);
             this.NavigationPanel.Controls.Add(this.AESButton);
             this.NavigationPanel.Controls.Add(this.EncodingButton);
@@ -113,6 +115,16 @@
             this.MainPanel.Size = new System.Drawing.Size(884, 636);
             this.MainPanel.TabIndex = 2;
             // 
+            // guna2HtmlLabel1
+            // 
+            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(773, 26);
+            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(99, 22);
+            this.guna2HtmlLabel1.TabIndex = 3;
+            this.guna2HtmlLabel1.Text = "Hash\'n\'Coder";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -125,6 +137,7 @@
             this.Text = "Hash\'n\'Coder";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.NavigationPanel.ResumeLayout(false);
+            this.NavigationPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -136,6 +149,7 @@
         private Guna.UI2.WinForms.Guna2Button AESButton;
         private Guna.UI2.WinForms.Guna2Button EncodingButton;
         private Guna.UI2.WinForms.Guna2Panel MainPanel;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
     }
 }
 
