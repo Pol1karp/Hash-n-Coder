@@ -46,10 +46,9 @@ namespace Hash_n_Coder
                 sb.AppendLine("SHA-256: " + ComputeHash(inputText, SHA256.Create()));
                 sb.AppendLine("SHA-384: " + ComputeHash(inputText, SHA384.Create()));
                 sb.AppendLine("SHA-512: " + ComputeHash(inputText, SHA512.Create()));
-
-                OutputTextBox.Text = sb.ToString();
-                OutputTextBox.Text = "Успешно!"; 
                 OutputTextBox.ForeColor = Color.Green;
+                OutputTextBox.Text = sb.ToString();
+                
             }
             catch (Exception ex)
             {

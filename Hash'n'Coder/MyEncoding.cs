@@ -72,11 +72,11 @@ namespace Hash_n_Coder
                         output = Uri.UnescapeDataString(input);
                     }
                 }
-
+                OutputTextBox.ForeColor = Color.Green;
                 OutputTextBox.Text = output;
 
-                OutputTextBox.Text = "Успешно!";
-                OutputTextBox.ForeColor = Color.Green;
+                
+                
             }
             catch (Exception ex)
             {

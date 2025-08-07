@@ -142,7 +142,7 @@ namespace Hash_n_Coder
                 string key = KeyTextBox.Text;
                 string inputText = InputTextBox.Text;
 
-
+                OutputTextBox.ForeColor = Color.Green;
                 if (algorithm == "AES-ECB")
                 {
                     if (mode == "Шифровать")
@@ -157,8 +157,7 @@ namespace Hash_n_Coder
                     else if (mode == "Дешифровать")
                         OutputTextBox.Text = DecryptAES_CBC(inputText, key);
                 }
-                OutputTextBox.Text = "Успешно!"; 
-                OutputTextBox.ForeColor = Color.Green;
+                
             }
             catch (Exception ex)
             {
@@ -178,9 +177,9 @@ namespace Hash_n_Coder
                 {
                     rng.GetBytes(randomKey);
                 }
-                KeyTextBox.Text = Convert.ToBase64String(randomKey);
-                OutputTextBox.Text = "Успешно!";
                 OutputTextBox.ForeColor = Color.Green;
+                KeyTextBox.Text = Convert.ToBase64String(randomKey);
+                
             }
             catch (Exception ex)
             {
