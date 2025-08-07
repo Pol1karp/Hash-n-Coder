@@ -21,9 +21,9 @@ namespace Hash_n_Coder
         }
         private void LoadControl(UserControl uc)
         {
-            guna2Panel1.Controls.Clear();
+            MainPanel.Controls.Clear();
             uc.Dock = DockStyle.Fill;
-            guna2Panel1.Controls.Add(uc);
+            MainPanel.Controls.Add(uc);
         }
 
         private void Form1_Load(object sender, EventArgs e)

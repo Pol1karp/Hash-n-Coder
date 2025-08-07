@@ -29,114 +29,114 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
-            this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.guna2Panel2.SuspendLayout();
+            this.NavigationPanel = new Guna.UI2.WinForms.Guna2Panel();
+            this.HashingButton = new Guna.UI2.WinForms.Guna2Button();
+            this.AESButton = new Guna.UI2.WinForms.Guna2Button();
+            this.EncodingButton = new Guna.UI2.WinForms.Guna2Button();
+            this.MainPanel = new Guna.UI2.WinForms.Guna2Panel();
+            this.NavigationPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // guna2Panel2
+            // NavigationPanel
             // 
-            this.guna2Panel2.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.guna2Panel2.Controls.Add(this.guna2Button3);
-            this.guna2Panel2.Controls.Add(this.guna2Button2);
-            this.guna2Panel2.Controls.Add(this.guna2Button1);
-            this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2Panel2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.guna2Panel2.Location = new System.Drawing.Point(0, 0);
-            this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(884, 55);
-            this.guna2Panel2.TabIndex = 1;
+            this.NavigationPanel.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.NavigationPanel.Controls.Add(this.HashingButton);
+            this.NavigationPanel.Controls.Add(this.AESButton);
+            this.NavigationPanel.Controls.Add(this.EncodingButton);
+            this.NavigationPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.NavigationPanel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.NavigationPanel.Location = new System.Drawing.Point(0, 0);
+            this.NavigationPanel.Name = "NavigationPanel";
+            this.NavigationPanel.Size = new System.Drawing.Size(884, 55);
+            this.NavigationPanel.TabIndex = 1;
             // 
-            // guna2Button3
+            // HashingButton
             // 
-            this.guna2Button3.Animated = true;
-            this.guna2Button3.AutoRoundedCorners = true;
-            this.guna2Button3.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button3.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button3.FillColor = System.Drawing.SystemColors.Highlight;
-            this.guna2Button3.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.guna2Button3.ForeColor = System.Drawing.Color.White;
-            this.guna2Button3.Location = new System.Drawing.Point(384, 3);
-            this.guna2Button3.Name = "guna2Button3";
-            this.guna2Button3.Size = new System.Drawing.Size(180, 45);
-            this.guna2Button3.TabIndex = 2;
-            this.guna2Button3.Text = "Hashing";
-            this.guna2Button3.Click += new System.EventHandler(this.guna2Button3_Click);
+            this.HashingButton.Animated = true;
+            this.HashingButton.AutoRoundedCorners = true;
+            this.HashingButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.HashingButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.HashingButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.HashingButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.HashingButton.FillColor = System.Drawing.SystemColors.Highlight;
+            this.HashingButton.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.HashingButton.ForeColor = System.Drawing.Color.White;
+            this.HashingButton.Location = new System.Drawing.Point(384, 3);
+            this.HashingButton.Name = "HashingButton";
+            this.HashingButton.Size = new System.Drawing.Size(180, 45);
+            this.HashingButton.TabIndex = 2;
+            this.HashingButton.Text = "Hashing";
+            this.HashingButton.Click += new System.EventHandler(this.guna2Button3_Click);
             // 
-            // guna2Button2
+            // AESButton
             // 
-            this.guna2Button2.Animated = true;
-            this.guna2Button2.AutoRoundedCorners = true;
-            this.guna2Button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button2.FillColor = System.Drawing.SystemColors.Highlight;
-            this.guna2Button2.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.guna2Button2.ForeColor = System.Drawing.Color.White;
-            this.guna2Button2.Location = new System.Drawing.Point(198, 3);
-            this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.Size = new System.Drawing.Size(180, 45);
-            this.guna2Button2.TabIndex = 1;
-            this.guna2Button2.Text = "AES";
-            this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click);
+            this.AESButton.Animated = true;
+            this.AESButton.AutoRoundedCorners = true;
+            this.AESButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.AESButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.AESButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.AESButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.AESButton.FillColor = System.Drawing.SystemColors.Highlight;
+            this.AESButton.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.AESButton.ForeColor = System.Drawing.Color.White;
+            this.AESButton.Location = new System.Drawing.Point(198, 3);
+            this.AESButton.Name = "AESButton";
+            this.AESButton.Size = new System.Drawing.Size(180, 45);
+            this.AESButton.TabIndex = 1;
+            this.AESButton.Text = "AES";
+            this.AESButton.Click += new System.EventHandler(this.guna2Button2_Click);
             // 
-            // guna2Button1
+            // EncodingButton
             // 
-            this.guna2Button1.Animated = true;
-            this.guna2Button1.AutoRoundedCorners = true;
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.FillColor = System.Drawing.SystemColors.Highlight;
-            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Location = new System.Drawing.Point(12, 3);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(180, 45);
-            this.guna2Button1.TabIndex = 0;
-            this.guna2Button1.Text = "Encoding";
-            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
+            this.EncodingButton.Animated = true;
+            this.EncodingButton.AutoRoundedCorners = true;
+            this.EncodingButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.EncodingButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.EncodingButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.EncodingButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.EncodingButton.FillColor = System.Drawing.SystemColors.Highlight;
+            this.EncodingButton.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.EncodingButton.ForeColor = System.Drawing.Color.White;
+            this.EncodingButton.Location = new System.Drawing.Point(12, 3);
+            this.EncodingButton.Name = "EncodingButton";
+            this.EncodingButton.Size = new System.Drawing.Size(180, 45);
+            this.EncodingButton.TabIndex = 0;
+            this.EncodingButton.Text = "Encoding";
+            this.EncodingButton.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
-            // guna2Panel1
+            // MainPanel
             // 
-            this.guna2Panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2Panel1.Location = new System.Drawing.Point(0, 55);
-            this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(884, 636);
-            this.guna2Panel1.TabIndex = 2;
-            this.guna2Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel1_Paint);
+            this.MainPanel.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainPanel.Location = new System.Drawing.Point(0, 55);
+            this.MainPanel.Name = "MainPanel";
+            this.MainPanel.Size = new System.Drawing.Size(884, 636);
+            this.MainPanel.TabIndex = 2;
+            this.MainPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel1_Paint);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 691);
-            this.Controls.Add(this.guna2Panel1);
-            this.Controls.Add(this.guna2Panel2);
+            this.Controls.Add(this.MainPanel);
+            this.Controls.Add(this.NavigationPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Hash\'n\'Coder";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.guna2Panel2.ResumeLayout(false);
+            this.NavigationPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
-        private Guna.UI2.WinForms.Guna2Button guna2Button3;
-        private Guna.UI2.WinForms.Guna2Button guna2Button2;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
+        private Guna.UI2.WinForms.Guna2Panel NavigationPanel;
+        private Guna.UI2.WinForms.Guna2Button HashingButton;
+        private Guna.UI2.WinForms.Guna2Button AESButton;
+        private Guna.UI2.WinForms.Guna2Button EncodingButton;
+        private Guna.UI2.WinForms.Guna2Panel MainPanel;
     }
 }
 
