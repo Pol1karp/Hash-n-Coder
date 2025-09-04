@@ -47,21 +47,22 @@
             // 
             // AlgoritmBox
             // 
+            this.AlgoritmBox.AutoRoundedCorners = true;
             this.AlgoritmBox.BackColor = System.Drawing.Color.Transparent;
-            this.AlgoritmBox.BorderRadius = 1;
+            this.AlgoritmBox.BorderRadius = 17;
             this.AlgoritmBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.AlgoritmBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.AlgoritmBox.FillColor = System.Drawing.Color.DimGray;
+            this.AlgoritmBox.FillColor = System.Drawing.SystemColors.HotTrack;
             this.AlgoritmBox.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.AlgoritmBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.AlgoritmBox.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.AlgoritmBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.AlgoritmBox.ForeColor = System.Drawing.Color.White;
             this.AlgoritmBox.ItemHeight = 30;
             this.AlgoritmBox.Items.AddRange(new object[] {
             "Base64",
             "UrlEncode",
             "HtmlEncode",
-            "Unescape Encode"});
+            "UnescapeEncode"});
             this.AlgoritmBox.Location = new System.Drawing.Point(30, 85);
             this.AlgoritmBox.Name = "AlgoritmBox";
             this.AlgoritmBox.Size = new System.Drawing.Size(256, 36);
@@ -80,14 +81,15 @@
             // 
             // CodeDecodeBox
             // 
+            this.CodeDecodeBox.AutoRoundedCorners = true;
             this.CodeDecodeBox.BackColor = System.Drawing.Color.Transparent;
             this.CodeDecodeBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.CodeDecodeBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CodeDecodeBox.FillColor = System.Drawing.Color.DimGray;
+            this.CodeDecodeBox.FillColor = System.Drawing.SystemColors.HotTrack;
             this.CodeDecodeBox.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.CodeDecodeBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.CodeDecodeBox.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.CodeDecodeBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.CodeDecodeBox.ForeColor = System.Drawing.Color.White;
             this.CodeDecodeBox.ItemHeight = 30;
             this.CodeDecodeBox.Items.AddRange(new object[] {
             "Encode",
@@ -121,6 +123,7 @@
             // InputTextBox
             // 
             this.InputTextBox.Animated = true;
+            this.InputTextBox.BorderColor = System.Drawing.Color.Silver;
             this.InputTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.InputTextBox.DefaultText = "";
             this.InputTextBox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -135,6 +138,7 @@
             this.InputTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.InputTextBox.Multiline = true;
             this.InputTextBox.Name = "InputTextBox";
+            this.InputTextBox.PlaceholderForeColor = System.Drawing.Color.IndianRed;
             this.InputTextBox.PlaceholderText = "";
             this.InputTextBox.SelectedText = "";
             this.InputTextBox.Size = new System.Drawing.Size(358, 360);
@@ -143,6 +147,7 @@
             // OutputTextBox
             // 
             this.OutputTextBox.Animated = true;
+            this.OutputTextBox.BorderColor = System.Drawing.Color.Silver;
             this.OutputTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.OutputTextBox.DefaultText = "";
             this.OutputTextBox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -157,6 +162,7 @@
             this.OutputTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.OutputTextBox.Multiline = true;
             this.OutputTextBox.Name = "OutputTextBox";
+            this.OutputTextBox.PlaceholderForeColor = System.Drawing.Color.IndianRed;
             this.OutputTextBox.PlaceholderText = "";
             this.OutputTextBox.ReadOnly = true;
             this.OutputTextBox.SelectedText = "";
@@ -216,11 +222,12 @@
             // StartButton
             // 
             this.StartButton.Animated = true;
+            this.StartButton.AutoRoundedCorners = true;
             this.StartButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.StartButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.StartButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.StartButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.StartButton.FillColor = System.Drawing.Color.DimGray;
+            this.StartButton.FillColor = System.Drawing.SystemColors.HotTrack;
             this.StartButton.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.StartButton.ForeColor = System.Drawing.Color.White;
             this.StartButton.Location = new System.Drawing.Point(300, 578);
@@ -235,9 +242,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Controls.Add(this.StartButton);
             this.Controls.Add(this.CopyButton);
             this.Controls.Add(this.PasteButton);
+            this.Controls.Add(this.StartButton);
             this.Controls.Add(this.OutputLabel);
             this.Controls.Add(this.InputTextLabel);
             this.Controls.Add(this.OutputTextBox);
@@ -247,6 +254,7 @@
             this.Controls.Add(this.CodeDecodeBox);
             this.Controls.Add(this.TitelLabel);
             this.Controls.Add(this.AlgoritmBox);
+            this.ForeColor = System.Drawing.Color.White;
             this.Name = "MyEncoding";
             this.Size = new System.Drawing.Size(884, 636);
             this.ResumeLayout(false);

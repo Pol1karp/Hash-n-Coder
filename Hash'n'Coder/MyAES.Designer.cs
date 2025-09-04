@@ -53,11 +53,12 @@
             // StartButton
             // 
             this.StartButton.Animated = true;
+            this.StartButton.AutoRoundedCorners = true;
             this.StartButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.StartButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.StartButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.StartButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.StartButton.FillColor = System.Drawing.Color.DimGray;
+            this.StartButton.FillColor = System.Drawing.SystemColors.HotTrack;
             this.StartButton.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.StartButton.ForeColor = System.Drawing.Color.White;
             this.StartButton.Location = new System.Drawing.Point(302, 583);
@@ -120,6 +121,7 @@
             // OutputTextBox
             // 
             this.OutputTextBox.Animated = true;
+            this.OutputTextBox.BorderColor = System.Drawing.Color.Silver;
             this.OutputTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.OutputTextBox.DefaultText = "";
             this.OutputTextBox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -134,6 +136,7 @@
             this.OutputTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.OutputTextBox.Multiline = true;
             this.OutputTextBox.Name = "OutputTextBox";
+            this.OutputTextBox.PlaceholderForeColor = System.Drawing.Color.IndianRed;
             this.OutputTextBox.PlaceholderText = "";
             this.OutputTextBox.ReadOnly = true;
             this.OutputTextBox.SelectedText = "";
@@ -143,6 +146,7 @@
             // InputTextBox
             // 
             this.InputTextBox.Animated = true;
+            this.InputTextBox.BorderColor = System.Drawing.Color.Silver;
             this.InputTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.InputTextBox.DefaultText = "";
             this.InputTextBox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -157,6 +161,7 @@
             this.InputTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.InputTextBox.Multiline = true;
             this.InputTextBox.Name = "InputTextBox";
+            this.InputTextBox.PlaceholderForeColor = System.Drawing.Color.IndianRed;
             this.InputTextBox.PlaceholderText = "";
             this.InputTextBox.SelectedText = "";
             this.InputTextBox.Size = new System.Drawing.Size(358, 146);
@@ -184,10 +189,11 @@
             // 
             // ShifrBox
             // 
+            this.ShifrBox.AutoRoundedCorners = true;
             this.ShifrBox.BackColor = System.Drawing.Color.Transparent;
             this.ShifrBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.ShifrBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ShifrBox.FillColor = System.Drawing.Color.DimGray;
+            this.ShifrBox.FillColor = System.Drawing.SystemColors.HotTrack;
             this.ShifrBox.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.ShifrBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.ShifrBox.Font = new System.Drawing.Font("Segoe UI", 12F);
@@ -214,11 +220,12 @@
             // 
             // AlgoritmBox
             // 
+            this.AlgoritmBox.AutoRoundedCorners = true;
             this.AlgoritmBox.BackColor = System.Drawing.Color.Transparent;
-            this.AlgoritmBox.BorderRadius = 1;
+            this.AlgoritmBox.BorderRadius = 17;
             this.AlgoritmBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.AlgoritmBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.AlgoritmBox.FillColor = System.Drawing.Color.DimGray;
+            this.AlgoritmBox.FillColor = System.Drawing.SystemColors.HotTrack;
             this.AlgoritmBox.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.AlgoritmBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.AlgoritmBox.Font = new System.Drawing.Font("Segoe UI", 12F);
@@ -235,11 +242,12 @@
             // 
             // KeyBox
             // 
+            this.KeyBox.AutoRoundedCorners = true;
             this.KeyBox.BackColor = System.Drawing.Color.Transparent;
-            this.KeyBox.BorderRadius = 1;
+            this.KeyBox.BorderRadius = 17;
             this.KeyBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.KeyBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.KeyBox.FillColor = System.Drawing.Color.DimGray;
+            this.KeyBox.FillColor = System.Drawing.SystemColors.HotTrack;
             this.KeyBox.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.KeyBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.KeyBox.Font = new System.Drawing.Font("Segoe UI", 12F);
@@ -268,6 +276,7 @@
             // KeyTextBox
             // 
             this.KeyTextBox.Animated = true;
+            this.KeyTextBox.BorderColor = System.Drawing.Color.Silver;
             this.KeyTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.KeyTextBox.DefaultText = "";
             this.KeyTextBox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -282,6 +291,7 @@
             this.KeyTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.KeyTextBox.Multiline = true;
             this.KeyTextBox.Name = "KeyTextBox";
+            this.KeyTextBox.PlaceholderForeColor = System.Drawing.Color.IndianRed;
             this.KeyTextBox.PlaceholderText = "";
             this.KeyTextBox.SelectedText = "";
             this.KeyTextBox.Size = new System.Drawing.Size(581, 44);
@@ -300,11 +310,12 @@
             // GenKeyButton
             // 
             this.GenKeyButton.Animated = true;
+            this.GenKeyButton.AutoRoundedCorners = true;
             this.GenKeyButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.GenKeyButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.GenKeyButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.GenKeyButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.GenKeyButton.FillColor = System.Drawing.Color.DimGray;
+            this.GenKeyButton.FillColor = System.Drawing.SystemColors.HotTrack;
             this.GenKeyButton.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.GenKeyButton.ForeColor = System.Drawing.Color.White;
             this.GenKeyButton.Location = new System.Drawing.Point(609, 286);
@@ -318,14 +329,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.CopyButton);
+            this.Controls.Add(this.PasteButton);
             this.Controls.Add(this.GenKeyButton);
             this.Controls.Add(this.InputKeyLabel);
             this.Controls.Add(this.KeyTextBox);
             this.Controls.Add(this.KeyLabel);
             this.Controls.Add(this.KeyBox);
             this.Controls.Add(this.StartButton);
-            this.Controls.Add(this.CopyButton);
-            this.Controls.Add(this.PasteButton);
             this.Controls.Add(this.OutputLabel);
             this.Controls.Add(this.TextInputLabel);
             this.Controls.Add(this.OutputTextBox);

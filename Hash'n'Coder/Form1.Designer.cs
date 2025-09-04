@@ -30,12 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.NavigationPanel = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.HashingButton = new Guna.UI2.WinForms.Guna2Button();
             this.AESButton = new Guna.UI2.WinForms.Guna2Button();
             this.EncodingButton = new Guna.UI2.WinForms.Guna2Button();
             this.MainPanel = new Guna.UI2.WinForms.Guna2Panel();
-            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.InputTextBox = new Guna.UI2.WinForms.Guna2TextBox();
             this.NavigationPanel.SuspendLayout();
+            this.MainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // NavigationPanel
@@ -51,6 +53,16 @@
             this.NavigationPanel.Name = "NavigationPanel";
             this.NavigationPanel.Size = new System.Drawing.Size(884, 55);
             this.NavigationPanel.TabIndex = 1;
+            // 
+            // guna2HtmlLabel1
+            // 
+            this.guna2HtmlLabel1.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(773, 26);
+            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(99, 22);
+            this.guna2HtmlLabel1.TabIndex = 3;
+            this.guna2HtmlLabel1.Text = "Hash\'n\'Coder";
             // 
             // HashingButton
             // 
@@ -109,21 +121,40 @@
             // MainPanel
             // 
             this.MainPanel.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.MainPanel.Controls.Add(this.InputTextBox);
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainPanel.Location = new System.Drawing.Point(0, 55);
             this.MainPanel.Name = "MainPanel";
             this.MainPanel.Size = new System.Drawing.Size(884, 636);
             this.MainPanel.TabIndex = 2;
             // 
-            // guna2HtmlLabel1
+            // InputTextBox
             // 
-            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(773, 26);
-            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(99, 22);
-            this.guna2HtmlLabel1.TabIndex = 3;
-            this.guna2HtmlLabel1.Text = "Hash\'n\'Coder";
+            this.InputTextBox.Animated = true;
+            this.InputTextBox.BackColor = System.Drawing.Color.Transparent;
+            this.InputTextBox.BorderColor = System.Drawing.Color.Silver;
+            this.InputTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.InputTextBox.DefaultText = resources.GetString("InputTextBox.DefaultText");
+            this.InputTextBox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.InputTextBox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.InputTextBox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.InputTextBox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.InputTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.InputTextBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.InputTextBox.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.InputTextBox.ForeColor = System.Drawing.Color.Black;
+            this.InputTextBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.InputTextBox.Location = new System.Drawing.Point(0, 0);
+            this.InputTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.InputTextBox.Multiline = true;
+            this.InputTextBox.Name = "InputTextBox";
+            this.InputTextBox.PlaceholderForeColor = System.Drawing.SystemColors.Info;
+            this.InputTextBox.PlaceholderText = "";
+            this.InputTextBox.ReadOnly = true;
+            this.InputTextBox.SelectedText = "";
+            this.InputTextBox.Size = new System.Drawing.Size(884, 636);
+            this.InputTextBox.TabIndex = 18;
+            this.InputTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Form1
             // 
@@ -134,10 +165,12 @@
             this.Controls.Add(this.NavigationPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hash\'n\'Coder";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.NavigationPanel.ResumeLayout(false);
             this.NavigationPanel.PerformLayout();
+            this.MainPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -150,6 +183,7 @@
         private Guna.UI2.WinForms.Guna2Button EncodingButton;
         private Guna.UI2.WinForms.Guna2Panel MainPanel;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
+        private Guna.UI2.WinForms.Guna2TextBox InputTextBox;
     }
 }
 

@@ -61,7 +61,7 @@ namespace Hash_n_Coder
                         output = WebUtility.HtmlDecode(input);
                     }
                 }
-                else if (algorithm == "Unescape")
+                else if (algorithm == "UnescapeEncode")
                 {
                     if (mode == "Encode")
                     {

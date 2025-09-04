@@ -42,11 +42,12 @@
             // StartButton
             // 
             this.StartButton.Animated = true;
+            this.StartButton.AutoRoundedCorners = true;
             this.StartButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.StartButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.StartButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.StartButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.StartButton.FillColor = System.Drawing.Color.DimGray;
+            this.StartButton.FillColor = System.Drawing.SystemColors.HotTrack;
             this.StartButton.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.StartButton.ForeColor = System.Drawing.Color.White;
             this.StartButton.Location = new System.Drawing.Point(302, 583);
@@ -107,6 +108,7 @@
             // OutputTextBox
             // 
             this.OutputTextBox.Animated = true;
+            this.OutputTextBox.BorderColor = System.Drawing.Color.Silver;
             this.OutputTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.OutputTextBox.DefaultText = "";
             this.OutputTextBox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -121,6 +123,7 @@
             this.OutputTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.OutputTextBox.Multiline = true;
             this.OutputTextBox.Name = "OutputTextBox";
+            this.OutputTextBox.PlaceholderForeColor = System.Drawing.Color.IndianRed;
             this.OutputTextBox.PlaceholderText = "";
             this.OutputTextBox.ReadOnly = true;
             this.OutputTextBox.SelectedText = "";
@@ -130,6 +133,8 @@
             // InputTextBox
             // 
             this.InputTextBox.Animated = true;
+            this.InputTextBox.BackColor = System.Drawing.Color.Transparent;
+            this.InputTextBox.BorderColor = System.Drawing.Color.Silver;
             this.InputTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.InputTextBox.DefaultText = "";
             this.InputTextBox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -144,6 +149,7 @@
             this.InputTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.InputTextBox.Multiline = true;
             this.InputTextBox.Name = "InputTextBox";
+            this.InputTextBox.PlaceholderForeColor = System.Drawing.Color.IndianRed;
             this.InputTextBox.PlaceholderText = "";
             this.InputTextBox.SelectedText = "";
             this.InputTextBox.Size = new System.Drawing.Size(358, 461);
@@ -163,9 +169,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.StartButton);
-            this.Controls.Add(this.CopyButton);
             this.Controls.Add(this.PasteButton);
+            this.Controls.Add(this.CopyButton);
+            this.Controls.Add(this.StartButton);
             this.Controls.Add(this.OutputLabel);
             this.Controls.Add(this.InputLabel);
             this.Controls.Add(this.OutputTextBox);
