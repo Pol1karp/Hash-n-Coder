@@ -4,6 +4,7 @@ using System.Security.Cryptography;
 using System.Windows.Forms;
 using System.IO;
 using System.Drawing;
+using Guna.UI2.WinForms;
 
 namespace Hash_n_Coder
 {
@@ -142,6 +143,24 @@ namespace Hash_n_Coder
                 string key = KeyTextBox.Text;
                 string inputText = InputTextBox.Text;
 
+                if (string.IsNullOrWhiteSpace(InputTextBox.Text))
+                {
+                    MessageBox.Show("Введите текст для обработки!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (AlgoritmBox.SelectedItem == null)
+                {
+                    MessageBox.Show("Выберите алгоритм!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(KeyTextBox.Text))
+                {
+                    MessageBox.Show("Введите ключ для обработки!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 OutputTextBox.ForeColor = Color.Green;
                 if (algorithm == "AES-ECB")
                 {
@@ -187,18 +206,39 @@ namespace Hash_n_Coder
                 OutputTextBox.ForeColor = Color.Red;
             }
         }
-        private void guna2ImageButton1_Click_1(object sender, EventArgs e)
+        private void ShifrBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            string mode = ShifrBox.SelectedItem?.ToString();
+
+            if (mode == "Шифровать")
+                StartButton.Text = "Шифровать";
+            else if (mode == "Дешифровать")
+                StartButton.Text = "Дешифровать";
+        }
+
+        private void PasteButton_Click(object sender, EventArgs e)
+        {
+
             if (Clipboard.ContainsText())
             {
                 InputTextBox.Text = Clipboard.GetText();
             }
+            else
+            {
+                MessageBox.Show("В буфере обмена нет текста!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
-        private void guna2ImageButton2_Click_1(object sender, EventArgs e)
+
+        private void CopyButton_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(OutputTextBox.Text))
             {
                 Clipboard.SetText(OutputTextBox.Text);
+                MessageBox.Show("Результат скопирован в буфер обмена!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Нет данных для копирования!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

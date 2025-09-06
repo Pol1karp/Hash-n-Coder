@@ -18,27 +18,16 @@ namespace Hash_n_Coder
             InitializeComponent();
         }
 
-        private void guna2ImageButtonPaste_Click(object sender, EventArgs e)
-        {
-            if (Clipboard.ContainsText())
-            {
-                InputTextBox.Text = Clipboard.GetText();
-            }
-        }
-
-        private void guna2ImageButtonCopy_Click(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(OutputTextBox.Text))
-            {
-                Clipboard.SetText(OutputTextBox.Text);
-            }
-        }
-
         private void guna2Button1_Click(object sender, EventArgs e)
         {
             try
             {
                 string inputText = InputTextBox.Text;
+                if (string.IsNullOrWhiteSpace(InputTextBox.Text))
+                {
+                    MessageBox.Show("Введите текст для обработки!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 StringBuilder sb = new StringBuilder();
 
                 sb.AppendLine("MD5:     " + ComputeHash(inputText, MD5.Create()));
@@ -61,6 +50,31 @@ namespace Hash_n_Coder
             byte[] inputBytes = Encoding.UTF8.GetBytes(input);
             byte[] hashBytes = algorithm.ComputeHash(inputBytes);
             return BitConverter.ToString(hashBytes).Replace("-", "").ToLowerInvariant();
+        }
+
+        private void PasteButton_Click(object sender, EventArgs e)
+        {
+            if (Clipboard.ContainsText())
+            {
+                InputTextBox.Text = Clipboard.GetText();
+            }
+            else
+            {
+                MessageBox.Show("В буфере обмена нет текста!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void CopyButton_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(OutputTextBox.Text))
+            {
+                Clipboard.SetText(OutputTextBox.Text);
+                MessageBox.Show("Результат скопирован в буфер обмена!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Нет данных для копирования!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }

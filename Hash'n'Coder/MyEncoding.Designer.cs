@@ -92,13 +92,14 @@
             this.CodeDecodeBox.ForeColor = System.Drawing.Color.White;
             this.CodeDecodeBox.ItemHeight = 30;
             this.CodeDecodeBox.Items.AddRange(new object[] {
-            "Encode",
-            "Decode"});
+            "Кодировать",
+            "Декодировать"});
             this.CodeDecodeBox.Location = new System.Drawing.Point(595, 85);
             this.CodeDecodeBox.Name = "CodeDecodeBox";
             this.CodeDecodeBox.Size = new System.Drawing.Size(256, 36);
             this.CodeDecodeBox.StartIndex = 0;
             this.CodeDecodeBox.TabIndex = 2;
+            this.CodeDecodeBox.SelectedIndexChanged += new System.EventHandler(this.CodeDecodeBox_SelectedIndexChanged);
             // 
             // AlChouseLabel
             // 
@@ -230,11 +231,11 @@
             this.StartButton.FillColor = System.Drawing.SystemColors.HotTrack;
             this.StartButton.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.StartButton.ForeColor = System.Drawing.Color.White;
-            this.StartButton.Location = new System.Drawing.Point(300, 578);
+            this.StartButton.Location = new System.Drawing.Point(302, 583);
             this.StartButton.Name = "StartButton";
             this.StartButton.Size = new System.Drawing.Size(280, 45);
             this.StartButton.TabIndex = 11;
-            this.StartButton.Text = "Encode\\Decode";
+            this.StartButton.Text = "Кодировать";
             this.StartButton.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
             // MyEncoding

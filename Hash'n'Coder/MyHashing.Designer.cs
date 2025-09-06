@@ -54,7 +54,7 @@
             this.StartButton.Name = "StartButton";
             this.StartButton.Size = new System.Drawing.Size(280, 45);
             this.StartButton.TabIndex = 23;
-            this.StartButton.Text = "Get Hashes";
+            this.StartButton.Text = "Получить хеши";
             this.StartButton.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
             // CopyButton
@@ -70,6 +70,7 @@
             this.CopyButton.PressedState.ImageSize = new System.Drawing.Size(34, 34);
             this.CopyButton.Size = new System.Drawing.Size(50, 33);
             this.CopyButton.TabIndex = 22;
+            this.CopyButton.Click += new System.EventHandler(this.CopyButton_Click);
             // 
             // PasteButton
             // 
@@ -84,6 +85,7 @@
             this.PasteButton.PressedState.ImageSize = new System.Drawing.Size(34, 34);
             this.PasteButton.Size = new System.Drawing.Size(50, 33);
             this.PasteButton.TabIndex = 21;
+            this.PasteButton.Click += new System.EventHandler(this.PasteButton_Click);
             // 
             // OutputLabel
             // 
