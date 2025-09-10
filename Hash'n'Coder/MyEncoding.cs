@@ -131,10 +131,9 @@ namespace Hash_n_Coder
         private void CodeDecodeBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             string mode = CodeDecodeBox.SelectedItem?.ToString();
-
-            if (mode == "Encode")
+            if (mode == "Кодировать")
                 StartButton.Text = "Кодировать";
-            else if (mode == "Decode")
+            else if (mode == "Декодировать")
                 StartButton.Text = "Декодировать";
         }
     }
